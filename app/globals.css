@@ -1,26 +1,346 @@
 @import "tailwindcss";
 
+/* ============================================
+   CAMILA RUEDA - PORTFOLIO DESIGN SYSTEM
+   Semantic Token Architecture (HSL-based)
+   Following Universal UI/UX Design Methodology
+   ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ===== BASE SEMANTIC TOKENS (HSL format) ===== */
+
+  /* Primary Brand Color - Purple (#D797EE) */
+  --primary: 285 72% 76%;
+  --primary-glow: 285 72% 85%;
+  --primary-dark: 285 72% 60%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Accent Color - Lime Yellow (#EAFE61) */
+  --accent: 68 92% 66%;
+  --accent-glow: 68 92% 75%;
+  --accent-dark: 68 92% 55%;
+  --accent-foreground: 0 0% 10%;
+
+  /* Secondary Color - Sky Blue (#9BC3FF) */
+  --secondary: 214 100% 81%;
+  --secondary-glow: 214 100% 88%;
+  --secondary-dark: 214 100% 70%;
+  --secondary-foreground: 0 0% 10%;
+
+  /* Soft Background - Lavender (#F5E8FC) */
+  --soft-bg: 285 70% 95%;
+  --soft-bg-dark: 285 60% 92%;
+
+  /* Success & Error Colors */
+  --success: 145 65% 65%; /* Verde menta que armoniza con la paleta */
+  --success-foreground: 145 70% 20%;
+  --error: 0 70% 60%;
+  --error-foreground: 0 70% 20%;
+
+  /* Base Colors - Minimal White-dominant */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 10%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+  --border: 285 30% 90%;
+  --input: 285 30% 90%;
+  --ring: 285 72% 76%;
+
+  /* ===== GRADIENTS ===== */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--primary)) 100%);
+  --gradient-soft: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--soft-bg)) 100%);
+  --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--secondary)) 100%);
+
+  /* ===== SHADOWS & EFFECTS ===== */
+  --shadow-glow-primary: 0 0 40px hsl(var(--primary) / 0.3);
+  --shadow-glow-accent: 0 0 40px hsl(var(--accent) / 0.3);
+  --shadow-glow-secondary: 0 0 40px hsl(var(--secondary) / 0.3);
+  --shadow-soft: 0 2px 8px hsl(var(--primary) / 0.1);
+  --shadow-medium: 0 4px 16px hsl(var(--primary) / 0.15);
+  --shadow-large: 0 8px 32px hsl(var(--primary) / 0.2);
+
+  /* ===== TRANSITIONS & ANIMATIONS ===== */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-fast: all 0.15s ease;
+  --transition-slow: all 0.6s ease;
+
+  /* ===== SPACING SYSTEM (8px base unit) ===== */
+  --spacing-xs: 0.5rem;  /* 8px */
+  --spacing-sm: 1rem;    /* 16px */
+  --spacing-md: 1.5rem;  /* 24px */
+  --spacing-lg: 2rem;    /* 32px */
+  --spacing-xl: 3rem;    /* 48px */
+  --spacing-2xl: 4rem;   /* 64px */
+  --spacing-3xl: 6rem;   /* 96px */
+
+  /* ===== BORDER RADIUS ===== */
+  --radius-sm: 0.5rem;   /* 8px */
+  --radius-md: 0.75rem;  /* 12px */
+  --radius-lg: 1rem;     /* 16px */
+  --radius-xl: 1.5rem;   /* 24px */
+  --radius-2xl: 2rem;    /* 32px */
+  --radius-full: 9999px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-secondary: var(--secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ===== ANIMATION KEYFRAMES ===== */
+
+/* 1. ENTRANCE ANIMATIONS */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 2. AMBIENT ANIMATIONS */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 3. ATTENTION-GRABBING (use sparingly) */
+@keyframes glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+  }
+}
+
+/* 4. 3D TRANSFORMS */
+@keyframes tilt-3d {
+  0%, 100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
+  }
+  75% {
+    transform: perspective(1000px) rotateX(-2deg) rotateY(2deg);
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.6s ease-out;
+}
+
+.animate-fade-in-left {
+  animation: fade-in-left 0.6s ease-out;
+}
+
+.animate-fade-in-right {
+  animation: fade-in-right 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-tilt-3d {
+  animation: tilt-3d 4s ease-in-out infinite;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: var(--transition-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+.hover-scale {
+  transition: var(--transition-smooth);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: var(--transition-smooth);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow-primary);
+}
+
+/* 3D card effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-3d:hover {
+  transform: rotateY(5deg) rotateX(5deg);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: hsl(var(--background) / 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== BASE STYLES ===== */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
 }
