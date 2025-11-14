@@ -3,8 +3,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useMemo } from "react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useI18n } from "@/lib/i18n-context";
 
@@ -17,7 +16,7 @@ const projects = [
     tagsKey: "projects.project1Tags",
     image: "/projects/pausa-activa.jpeg",
     gradient: "from-[hsl(var(--primary))] to-[hsl(var(--accent))]",
-    behanceUrl: "#",
+    behanceUrl: "https://www.behance.net/gallery/237381133/Pausa-Activa",
   },
   {
     id: 2,
@@ -26,7 +25,7 @@ const projects = [
     tagsKey: "projects.project2Tags",
     image: "/projects/airbnb.jpeg",
     gradient: "from-[hsl(var(--secondary))] to-[hsl(var(--accent))]",
-    behanceUrl: "#",
+    behanceUrl: "https://www.behance.net/gallery/235867707/Clon-de-Airbnb",
   },
   {
     id: 3,
@@ -35,7 +34,7 @@ const projects = [
     tagsKey: "projects.project3Tags",
     image: "/projects/tevisito.jpeg",
     gradient: "from-[hsl(var(--accent))] to-[hsl(var(--primary))]",
-    behanceUrl: "#",
+    behanceUrl: "https://www.behance.net/gallery/227053151/Te-Visito",
   },
   {
     id: 4,
@@ -44,7 +43,7 @@ const projects = [
     tagsKey: "projects.project4Tags",
     image: "/projects/legere2.jpeg",
     gradient: "from-[hsl(var(--primary))] to-[hsl(var(--secondary))]",
-    behanceUrl: "#",
+    behanceUrl: "https://www.behance.net/gallery/218134191/Legere-UX-UI-Camila-Rueda",
   },
 ];
 
@@ -137,11 +136,11 @@ export function Projects() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-5xl mx-auto"
+          className="max-w-5xl mx-auto px-8 md:px-0"
         >
           <div className="relative">
             {/* Project Card */}
-            <div className="relative h-[400px] md:h-[450px] flex items-center justify-center overflow-hidden" style={{ willChange: 'transform' }}>
+            <div className="relative h-[320px] md:h-[450px] flex items-center justify-center overflow-hidden" style={{ willChange: 'transform' }}>
               <AnimatePresence initial={false} custom={direction} mode="sync">
                 <motion.div
                   key={currentIndex}
@@ -175,8 +174,11 @@ export function Projects() {
                     padding="none"
                     className="overflow-hidden"
                   >
-                    {/* Mobile: Solo imagen */}
-                    <div className="md:hidden relative h-[400px] overflow-hidden bg-gradient-to-br from-[hsl(var(--soft-bg))] to-white">
+                    {/* Mobile: Solo imagen clickeable */}
+                    <div
+                      className="md:hidden relative h-[320px] overflow-hidden bg-gradient-to-br from-[hsl(var(--soft-bg))] to-white cursor-pointer active:opacity-90 transition-opacity"
+                      onClick={() => window.open(currentProject.behanceUrl, "_blank")}
+                    >
                       <Image
                         src={currentProject.image}
                         alt={t(currentProject.titleKey)}
@@ -188,8 +190,11 @@ export function Projects() {
                       />
                     </div>
 
-                    {/* Desktop: Grid con imagen + info */}
-                    <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-0">
+                    {/* Desktop: Grid con imagen + info - Card clickeable */}
+                    <div
+                      className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-0 cursor-pointer hover:opacity-95 transition-opacity"
+                      onClick={() => window.open(currentProject.behanceUrl, "_blank")}
+                    >
                       {/* Project Image */}
                       <div className="relative h-80 lg:h-full overflow-hidden bg-gradient-to-br from-[hsl(var(--soft-bg))] to-white">
                         <Image
@@ -218,7 +223,7 @@ export function Projects() {
                           </p>
 
                           {/* Tags */}
-                          <div className="flex flex-wrap gap-2 mb-8">
+                          <div className="flex flex-wrap gap-2">
                             {tags.map((tag) => (
                               <span
                                 key={tag}
@@ -228,18 +233,6 @@ export function Projects() {
                               </span>
                             ))}
                           </div>
-
-                          {/* View on Behance Button */}
-                          <Button
-                            variant="hero"
-                            size="lg"
-                            onClick={() =>
-                              window.open(currentProject.behanceUrl, "_blank")
-                            }
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t("projects.viewOnBehance")}
-                          </Button>
                         </motion.div>
                       </div>
                     </div>
@@ -248,8 +241,8 @@ export function Projects() {
               </AnimatePresence>
             </div>
 
-            {/* Navigation Arrows - Mobile (Over Image) */}
-            <div className="absolute z-20 top-1/2 -translate-y-1/2 left-4 right-4 flex justify-between md:hidden pointer-events-none">
+            {/* Navigation Arrows - All screens (Outside Card) */}
+            <div className="absolute z-10 top-1/2 -translate-y-1/2 -left-8 -right-8 md:left-[-4rem] md:right-[-4rem] flex justify-between pointer-events-none">
               <motion.button
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
@@ -257,7 +250,7 @@ export function Projects() {
                 className="pointer-events-auto"
                 aria-label="Previous project"
               >
-                <ChevronLeft className="w-12 h-12 text-[hsl(var(--primary))] drop-shadow-lg" />
+                <ChevronLeft className="w-8 h-8 md:w-10 md:h-10 text-[hsl(var(--primary))] drop-shadow-lg" />
               </motion.button>
 
               <motion.button
@@ -267,30 +260,7 @@ export function Projects() {
                 className="pointer-events-auto"
                 aria-label="Next project"
               >
-                <ChevronRight className="w-12 h-12 text-[hsl(var(--primary))] drop-shadow-lg" />
-              </motion.button>
-            </div>
-
-            {/* Navigation Arrows - Desktop (Outside Card) */}
-            <div className="hidden md:flex absolute z-10 top-1/2 -translate-y-1/2 left-[-4rem] right-[-4rem] justify-between pointer-events-none">
-              <motion.button
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => paginate(-1)}
-                className="pointer-events-auto"
-                aria-label="Previous project"
-              >
-                <ChevronLeft className="w-10 h-10 text-[hsl(var(--primary))] drop-shadow-lg" />
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => paginate(1)}
-                className="pointer-events-auto"
-                aria-label="Next project"
-              >
-                <ChevronRight className="w-10 h-10 text-[hsl(var(--primary))] drop-shadow-lg" />
+                <ChevronRight className="w-8 h-8 md:w-10 md:h-10 text-[hsl(var(--primary))] drop-shadow-lg" />
               </motion.button>
             </div>
           </div>
@@ -330,23 +300,21 @@ export function Projects() {
           </motion.div>
         </motion.div>
 
-        {/* View More Button */}
+        {/* View More Link */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center mt-16"
         >
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() =>
-              window.open("https://www.behance.net/your-profile", "_blank")
-            }
+          <a
+            href="https://www.behance.net/ruedaca"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[hsl(var(--primary))] hover:text-[hsl(var(--accent))] transition-colors font-medium text-lg underline underline-offset-4"
           >
             {t("projects.viewAllProjects")}
-            <ExternalLink className="w-4 h-4 ml-2" />
-          </Button>
+          </a>
         </motion.div>
       </div>
     </section>

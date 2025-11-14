@@ -8,16 +8,17 @@ export function LanguageSelector() {
   const { language, setLanguage } = useI18n();
 
   return (
-    <div className="flex items-center gap-2 bg-[hsl(var(--soft-bg))] rounded-full p-1 border border-[hsl(var(--border))]">
+    <div className="inline-flex items-center gap-1 bg-[hsl(var(--soft-bg))] rounded-full p-1 border border-[hsl(var(--border))] w-fit">
       <button
         onClick={() => setLanguage("es")}
-        className="relative px-3 py-1.5 rounded-full text-sm font-medium transition-colors"
+        className="relative px-3 py-1.5 rounded-full text-sm font-medium transition-colors min-w-[48px]"
         aria-label="Cambiar a español"
       >
         {language === "es" && (
           <motion.div
             layoutId="language-indicator"
-            className="absolute inset-0 bg-[hsl(var(--primary))] rounded-full"
+            className="absolute inset-0 bg-[hsl(var(--primary))] rounded-full -z-0"
+            initial={false}
             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
           />
         )}
@@ -33,13 +34,14 @@ export function LanguageSelector() {
       </button>
       <button
         onClick={() => setLanguage("en")}
-        className="relative px-3 py-1.5 rounded-full text-sm font-medium transition-colors"
+        className="relative px-3 py-1.5 rounded-full text-sm font-medium transition-colors min-w-[48px]"
         aria-label="Switch to English"
       >
         {language === "en" && (
           <motion.div
             layoutId="language-indicator"
-            className="absolute inset-0 bg-[hsl(var(--primary))] rounded-full"
+            className="absolute inset-0 bg-[hsl(var(--primary))] rounded-full -z-0"
+            initial={false}
             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
           />
         )}

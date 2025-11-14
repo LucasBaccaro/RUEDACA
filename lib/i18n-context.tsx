@@ -166,6 +166,10 @@ const translations = {
       titleHighlight: "Juntos",
       description:
         "¿Tienes un proyecto en mente? Me encantaría saber más. Conversemos sobre cómo puedo ayudarte a crear experiencias digitales.",
+      nameLabel: "Nombre",
+      emailLabel: "Email",
+      subjectLabel: "Asunto",
+      messageLabel: "Mensaje",
       namePlaceholder: "Tu Nombre",
       emailPlaceholder: "Tu Email",
       messagePlaceholder: "Tu Mensaje",
@@ -174,6 +178,8 @@ const translations = {
       successMessage: "¡Mensaje enviado con éxito!",
       errorMessage: "Hubo un error. Por favor inténtalo nuevamente.",
       orReachOut: "O comunícate directamente a través de",
+      email: "Email",
+      location: "Ubicación",
     },
     chatbot: {
       welcomeMessage:
@@ -322,6 +328,10 @@ const translations = {
       titleHighlight: "Together",
       description:
         "Have a project in mind? I'd love to hear about it. Let's discuss how I can help you create digital experiences.",
+      nameLabel: "Name",
+      emailLabel: "Email",
+      subjectLabel: "Subject",
+      messageLabel: "Message",
       namePlaceholder: "Your Name",
       emailPlaceholder: "Your Email",
       messagePlaceholder: "Your Message",
@@ -330,6 +340,8 @@ const translations = {
       successMessage: "Message sent successfully!",
       errorMessage: "There was an error. Please try again.",
       orReachOut: "Or reach out directly via",
+      email: "Email",
+      location: "Location",
     },
     chatbot: {
       welcomeMessage:

@@ -8,7 +8,7 @@ import { useI18n } from "@/lib/i18n-context";
 import { LanguageSelector } from "./language-selector";
 
 const navItems = [
-  { key: "home", href: "#home" },
+  { key: "home", href: "#hero" },
   { key: "about", href: "#about" },
   { key: "projects", href: "#projects" },
   { key: "skills", href: "#skills" },
@@ -22,7 +22,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -30,87 +30,73 @@ export function Navbar() {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+    <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-[var(--shadow-soft)] py-4"
-          : "bg-transparent py-6"
+          ? "bg-white shadow-md"
+          : "bg-white"
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.a
+          <a
             href="#home"
-            className="text-2xl font-bold"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="text-xl md:text-2xl font-bold"
           >
             <span className="gradient-text">Camila Rueda</span>
-          </motion.a>
+          </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item, index) => (
-              <motion.a
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <a
                 key={item.key}
                 href={item.href}
-                className="text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))] transition-colors font-medium"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
+                className="text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))] transition-colors font-medium text-sm"
               >
                 {t(`nav.${item.key}`)}
-              </motion.a>
+              </a>
             ))}
             <LanguageSelector />
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          {/* Mobile: Language Selector + Menu Button */}
+          <div className="flex md:hidden items-center gap-3">
+            <LanguageSelector />
+            <button
+              className="p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 pb-4"
-          >
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden border-t border-[hsl(var(--border))] bg-white">
+            <div className="py-4 space-y-1">
               {navItems.map((item) => (
                 <a
                   key={item.key}
                   href={item.href}
-                  className="text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))] transition-colors font-medium py-2"
+                  className="block px-4 py-3 text-[hsl(var(--foreground))] hover:bg-[hsl(var(--soft-bg))] hover:text-[hsl(var(--primary))] transition-colors font-medium rounded-lg"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t(`nav.${item.key}`)}
                 </a>
               ))}
-              <div className="pt-2">
-                <LanguageSelector />
-              </div>
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
-    </motion.nav>
+    </nav>
   );
 }

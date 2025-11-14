@@ -185,7 +185,7 @@ export function Skills() {
                   {/* Category Header */}
                   <div className="flex items-center gap-4 mb-8">
                     <motion.div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                      className="w-16 h-16 min-w-[64px] rounded-2xl flex items-center justify-center shrink-0"
                       style={{ backgroundColor: currentCategory.color }}
                       initial={{ rotate: 0 }}
                       animate={{ rotate: 360 }}

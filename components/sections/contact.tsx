@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, MapPin, Phone, Send, Check } from "lucide-react";
+import { Mail, MapPin, Send, Check } from "lucide-react";
 import { useI18n } from "@/lib/i18n-context";
 
 export function Contact() {
@@ -106,19 +106,13 @@ export function Contact() {
   const contactInfo = [
     {
       icon: Mail,
-      label: "Email",
+      labelKey: "contact.email",
       value: "ruedaca97@gmail.com",
       href: "mailto:ruedaca97@gmail.com",
     },
     {
-      icon: Phone,
-      label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
-    },
-    {
       icon: MapPin,
-      label: "Location",
+      labelKey: "contact.location",
       value: "Buenos Aires, Argentina",
       href: null,
     },
@@ -172,7 +166,7 @@ export function Contact() {
             >
               {contactInfo.map((info, index) => (
                 <motion.div
-                  key={info.label}
+                  key={info.labelKey}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
@@ -185,7 +179,7 @@ export function Contact() {
                         </div>
                         <div>
                           <h3 className="font-semibold text-[hsl(var(--foreground))] mb-1">
-                            {info.label}
+                            {t(info.labelKey)}
                           </h3>
                           {info.href ? (
                             <a
@@ -222,7 +216,7 @@ export function Contact() {
                       htmlFor="name"
                       className="block text-sm font-medium text-[hsl(var(--foreground))] mb-2"
                     >
-                      Name *
+                      {t("contact.nameLabel")} *
                     </label>
                     <input
                       type="text"
@@ -248,7 +242,7 @@ export function Contact() {
                       htmlFor="email"
                       className="block text-sm font-medium text-[hsl(var(--foreground))] mb-2"
                     >
-                      Email *
+                      {t("contact.emailLabel")} *
                     </label>
                     <input
                       type="email"
@@ -274,7 +268,7 @@ export function Contact() {
                       htmlFor="subject"
                       className="block text-sm font-medium text-[hsl(var(--foreground))] mb-2"
                     >
-                      Subject *
+                      {t("contact.subjectLabel")} *
                     </label>
                     <input
                       type="text"
@@ -287,7 +281,7 @@ export function Contact() {
                           ? "border-red-500"
                           : "border-[hsl(var(--border))]"
                       } bg-white focus:outline-none focus:ring-2 focus:ring-[hsl(var(--primary))] focus:border-transparent transition-all`}
-                      placeholder="Subject"
+                      placeholder={t("contact.subjectLabel")}
                     />
                     {errors.subject && (
                       <p className="mt-1 text-sm text-red-500">
@@ -302,7 +296,7 @@ export function Contact() {
                       htmlFor="message"
                       className="block text-sm font-medium text-[hsl(var(--foreground))] mb-2"
                     >
-                      Message *
+                      {t("contact.messageLabel")} *
                     </label>
                     <textarea
                       id="message"
