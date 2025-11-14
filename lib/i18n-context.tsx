@@ -68,7 +68,7 @@ const translations = {
       name: "Camila Rueda",
       title: "UX/UI Designer",
       description:
-        "Creadora de experiencias digitales intuitivas y centradas en las personas, combinando investigación, empatía y diseño estratégico.",
+        "Diseñadora especializada en crear productos digitales intuitivos y centrados en las personas, combinando investigación, empatía y diseño estratégico.",
       viewWork: "Ver Mi Trabajo",
       getInTouch: "Contactame",
       scrollExplore: "Scroll para explorar",
@@ -78,7 +78,7 @@ const translations = {
       title: "Creando Experiencias",
       titleHighlight: "Digitales",
       description:
-        "Diseñadora en formación continua. Me capacité en Coderhouse y completé la Diplomatura en UX/UI en UTN. Disfruto crear experiencias digitales funcionales y centradas en las personas.",
+        "Diseñadora en formación continua. Me capacité en Coderhouse y completé la Diplomatura en UX/UI en UTN. Disfruto crear interfaces funcionales y centradas en las personas.",
       feature1Title: "Diseño Basado en Datos",
       feature1Desc:
         "Decisiones de diseño respaldadas por investigación cuantitativa y cualitativa, validadas con A/B testing y métricas de usabilidad.",
@@ -139,7 +139,7 @@ const translations = {
       title: "Proyectos",
       titleHighlight: "Destacados",
       description:
-        "Una selección curada de mi trabajo, mostrando soluciones centradas en el usuario y experiencias digitales.",
+        "Una selección curada de mi trabajo, mostrando soluciones de diseño centradas en el usuario.",
       project1Title: "Pausa Activa",
       project1Desc:
         "App de bienestar que promueve pausas saludables en el trabajo mediante ejercicios guiados, recordatorios y seguimiento de progreso.",
@@ -165,7 +165,7 @@ const translations = {
       title: "Trabajemos",
       titleHighlight: "Juntos",
       description:
-        "¿Tenes un proyecto en mente? Me encantaría saber más. Conversemos sobre cómo puedo ayudarte a crear experiencias digitales.",
+        "¿Tenés un proyecto en mente? Me encantaría saber más. Conversemos sobre cómo puedo ayudarte a dar vida a tus ideas.",
       nameLabel: "Nombre",
       emailLabel: "Email",
       subjectLabel: "Asunto",
@@ -198,7 +198,7 @@ const translations = {
     },
     footer: {
       description:
-        "Creando experiencias digitales a través del diseño centrado en el usuario.",
+        "Transformando ideas en diseño centrado en el usuario.",
       quickLinks: "Enlaces Rápidos",
       connect: "Conecta",
       madeWith: "Hecho con",
@@ -225,7 +225,7 @@ const translations = {
       name: "Camila Rueda",
       title: "UX/UI Designer",
       description:
-        "UX/UI Designer specialized in crafting intuitive, user-centered digital experiences through research, empathy, and strategic design.",
+        "Designer specialized in creating intuitive, user-centered digital products through research, empathy, and strategic design.",
       viewWork: "View My Work",
       getInTouch: "Get In Touch",
       scrollExplore: "Scroll to explore",
@@ -235,7 +235,7 @@ const translations = {
       title: "Crafting Digital",
       titleHighlight: "Experiences",
       description:
-        "Designer in continuous training. I studied at Coderhouse and completed the UX/UI Diploma at UTN. I enjoy creating functional, people-centered digital experiences.",
+        "Designer in continuous training. I studied at Coderhouse and completed the UX/UI Diploma at UTN. I enjoy creating functional, people-centered interfaces.",
       feature1Title: "Data-Driven Design",
       feature1Desc:
         "Design decisions backed by quantitative and qualitative research, validated through A/B testing and usability metrics.",
@@ -296,7 +296,7 @@ const translations = {
       title: "Featured",
       titleHighlight: "Projects",
       description:
-        "A curated selection of my work showcasing user-centered design solutions and digital experiences.",
+        "A curated selection of my work showcasing user-centered design solutions.",
       project1Title: "Pausa Activa",
       project1Desc:
         "Wellness app promoting healthy work breaks through guided exercises, reminders, and progress tracking.",
@@ -327,7 +327,7 @@ const translations = {
       title: "Let's Work",
       titleHighlight: "Together",
       description:
-        "Have a project in mind? I'd love to hear about it. Let's discuss how I can help you create digital experiences.",
+        "Have a project in mind? I'd love to hear about it. Let's discuss how I can help you bring your ideas to life.",
       nameLabel: "Name",
       emailLabel: "Email",
       subjectLabel: "Subject",
@@ -360,7 +360,7 @@ const translations = {
     },
     footer: {
       description:
-        "Creating digital experiences through user-centered design.",
+        "Transforming ideas into user-centered design.",
       quickLinks: "Quick Links",
       connect: "Connect",
       madeWith: "Made with",
