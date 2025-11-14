@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Camila Rueda | UX/UI Designer & Frontend Developer",
+  title: "Camila Rueda | UX/UI Designer",
   description:
-    "Portfolio of Camila Rueda - Senior Frontend Developer and UX/UI Designer specializing in creating beautiful, user-centered digital experiences with pixel-perfect precision.",
+    "Portfolio of Camila Rueda - Frontend Developer and UX/UI Designer specializing in creating beautiful, user-centered digital experiences with pixel-perfect precision.",
   keywords: [
     "UX/UI Designer",
     "Frontend Developer",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Camila Rueda | UX/UI Designer & Frontend Developer",
     description:
-      "Senior Frontend Developer crafting beautiful, user-centered digital experiences.",
+      "Frontend Developer crafting beautiful, user-centered digital experiences.",
     type: "website",
   },
 };
