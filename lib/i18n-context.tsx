@@ -13,19 +13,24 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("es");
-
-  // Load language preference from localStorage
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem("language") as Language;
-    if (savedLanguage && (savedLanguage === "es" || savedLanguage === "en")) {
-      setLanguageState(savedLanguage);
+  // Initialize language from localStorage or default to "es"
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem("language") as Language;
+      if (savedLanguage && (savedLanguage === "es" || savedLanguage === "en")) {
+        return savedLanguage;
+      }
     }
-  }, []);
+    return "es"; // Default to Spanish
+  });
+
+  // Save language preference to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("language", language);
+  }, [language]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem("language", lang);
   };
 
   const t = (key: string): string => {

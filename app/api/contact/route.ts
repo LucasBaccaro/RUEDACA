@@ -27,8 +27,8 @@ export async function POST(request: Request) {
 
     // Enviar email usando Resend
     const { data, error } = await resend.emails.send({
-      from: 'Portfolio Camila <onboarding@resend.dev>',
-      to: ['lucas.ospegap@gmail.com'], // Tu email de Resend (temporalmente para testing)
+      from: 'Portfolio Camila <noreply@ruedaca.com>',
+      to: ['ruedaca97@gmail.com'],
       replyTo: email,
       subject: `Nuevo mensaje de contacto: ${subject}`,
       html: `
@@ -119,7 +119,7 @@ export async function POST(request: Request) {
               </div>
 
               <div class="footer">
-                Enviado desde tu portfolio • <a href="https://camilarueda.com">camilarueda.com</a>
+                Enviado desde tu portfolio • <a href="https://ruedaca.com">ruedaca.com</a>
               </div>
             </div>
           </body>
