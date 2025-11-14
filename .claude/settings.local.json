@@ -3,7 +3,10 @@
     "allow": [
       "Bash(lsof -ti:3001)",
       "Bash(xargs kill -9)",
-      "Bash(git add .)"
+      "Bash(git add .)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd complete portfolio website with all features\n\n- Implemented ChatKit AI assistant integration\n- Added contact form with Resend email service\n- Created responsive project carousel with mobile support\n- Implemented bilingual support (ES/EN)\n- Added custom design system with semantic colors\n- Updated skills section with tabbed interface\n- Integrated social media links (LinkedIn, Behance, Email)\n- Added success/error feedback with proper UX colors\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git remote add origin https://github.com/LucasBaccaro/RUEDACA.git)",
+      "Bash(git push -u origin main)"
     ],
     "deny": [],
     "ask": []
