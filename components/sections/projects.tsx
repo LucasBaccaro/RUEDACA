@@ -136,7 +136,7 @@ export function Projects() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-5xl mx-auto px-8 md:px-0"
+          className="max-w-7xl mx-auto px-8 md:px-0"
         >
           <div className="relative">
             {/* Project Card */}
@@ -172,11 +172,11 @@ export function Projects() {
                   <Card
                     variant="static"
                     padding="none"
-                    className="overflow-hidden"
+                    className="overflow-hidden h-[320px] md:h-[450px]"
                   >
                     {/* Mobile: Solo imagen clickeable */}
                     <div
-                      className="md:hidden relative h-[320px] overflow-hidden bg-gradient-to-br from-[hsl(var(--soft-bg))] to-white cursor-pointer active:opacity-90 transition-opacity"
+                      className="md:hidden relative h-full overflow-hidden bg-gradient-to-br from-[hsl(var(--soft-bg))] to-white cursor-pointer active:opacity-90 transition-opacity"
                       onClick={() => window.open(currentProject.behanceUrl, "_blank")}
                     >
                       <Image
@@ -192,11 +192,11 @@ export function Projects() {
 
                     {/* Desktop: Grid con imagen + info - Card clickeable */}
                     <div
-                      className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-0 cursor-pointer hover:opacity-95 transition-opacity"
+                      className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-0 h-full cursor-pointer hover:opacity-95 transition-opacity"
                       onClick={() => window.open(currentProject.behanceUrl, "_blank")}
                     >
                       {/* Project Image */}
-                      <div className="relative h-80 lg:h-full overflow-hidden bg-gradient-to-br from-[hsl(var(--soft-bg))] to-white">
+                      <div className="relative h-full overflow-hidden bg-gradient-to-br from-[hsl(var(--soft-bg))] to-white">
                         <Image
                           src={currentProject.image}
                           alt={t(currentProject.titleKey)}
@@ -311,7 +311,7 @@ export function Projects() {
             href="https://www.behance.net/ruedaca"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[hsl(var(--primary))] hover:text-[hsl(var(--accent))] transition-colors font-medium text-lg underline underline-offset-4"
+            className="inline-flex items-center gap-2 text-[hsl(var(--primary))] hover:text-[hsl(var(--primary-dark))] active:text-[hsl(var(--primary-dark))] transition-colors font-medium text-lg underline underline-offset-4"
           >
             {t("projects.viewAllProjects")}
           </a>

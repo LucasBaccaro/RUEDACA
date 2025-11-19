@@ -81,7 +81,7 @@ function SkillBadge({ skill, color }: { skill: { nameKey: string }; color: strin
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -2 }}
-      className="px-3 py-2 rounded-lg border-2 font-medium text-xs md:text-sm transition-all cursor-default"
+      className="px-4 py-2.5 md:px-4 md:py-2.5 rounded-lg border-2 font-medium text-sm transition-all cursor-default"
       style={{
         borderColor: color,
         backgroundColor: `${color}10`,
